@@ -1,9 +1,32 @@
-import { useState } from "react";
+import { useState,FormEvent } from "react";
 
 
 export const Login = () => {
     const [userCredentials, setUserCredentials] = useState({email:'',password:''})
     console.log(userCredentials)
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+        fetch('http://localhost:4000/login', {
+            method: 'post',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              email:userCredentials.email,
+              password: userCredentials.password,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.token) {
+                alert('El usuario es correcto');
+              } else {
+                alert(JSON.stringify(data));
+              }
+            });
+    }
     return (
         <div
           style={{
@@ -31,28 +54,9 @@ export const Login = () => {
             </u>
           </div>
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              fetch('http://localhost:4000/login', {
-                method: 'post',
-                headers: {
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  email:userCredentials.email,
-                  password: userCredentials.password,
-                }),
-              })
-                .then((response) => response.json())
-                .then((data) => {
-                  if (data.token) {
-                    alert('El usuario es correcto');
-                  } else {
-                    alert(JSON.stringify(data));
-                  }
-                });
-            }}
+            onSubmit={handleSubmit}
+             
+            
             style={{
               display: 'flex',
               justifyContent: 'center',
