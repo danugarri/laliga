@@ -59,3 +59,8 @@ yarn && yarn start
 
 **_ Puedes documentar aquí la memoria de tu prueba _**
 
+- Added the following dependencies:
+
+* react-router-dom
+* redux react-redux redux @reduxjs/toolkit
+* redux-saga @types/redux-saga

@@ -2,16 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
+import { App } from './App';
 
-import { Login } from './components/Login/Login';
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-     <Login />
+      <App />
     </ChakraProvider>
   </React.StrictMode>
 );
