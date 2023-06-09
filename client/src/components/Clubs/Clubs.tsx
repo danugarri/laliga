@@ -8,7 +8,7 @@ import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
 
 export const Clubs = () => {
-  const [filters, setfilters] = useState<FiltersType>({ limit: 6, offset: 0, favorite: false });
+  const [filters, setFilters] = useState<FiltersType>({ limit: 6, offset: 0, favorite: false });
   const clubs = useSelector(selectClubs);
   const clubsStatusRequest = useSelector(selectClubsStatus);
   const dispatch = useAppDispatch();
@@ -16,6 +16,11 @@ export const Clubs = () => {
   useEffect(() => {
     dispatch({ type: 'clubs/getAsyncClubs', payload: filters });
   }, [dispatch, filters]);
+  const updateFilters = (filters: FiltersType, filter: string, value: any) =>
+    setFilters({
+      ...filters,
+      [filter]: value,
+    });
 
   return (
     <>
@@ -45,7 +50,7 @@ export const Clubs = () => {
               }
             </section>
           ))}
-          <Pagination />
+          <Pagination updateFilters={updateFilters} filters={filters} />
         </div>
       ) : (
         <h1>Loading</h1>
