@@ -1,5 +1,4 @@
 import { useState, FormEvent } from 'react';
-import { getAsyncToken } from '../../features/auth/auth.Slice';
 import { useAppDispatch } from '../../store';
 
 export const Login = () => {
@@ -11,7 +10,7 @@ export const Login = () => {
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
-    dispatch(getAsyncToken(userCredentials));
+    dispatch({ type: 'token/getAsyncToken', payload: userCredentials });
   };
 
   return (
