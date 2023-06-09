@@ -8,7 +8,12 @@ import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
 
 export const Clubs = () => {
-  const [filters, setFilters] = useState<FiltersType>({ limit: 6, offset: 0, favorite: false });
+  const [filters, setFilters] = useState<FiltersType>({
+    limit: 6,
+    offset: 0,
+    favorite: false,
+    name_like: '',
+  });
   const clubs = useSelector(selectClubs);
   const clubsStatusRequest = useSelector(selectClubsStatus);
   const dispatch = useAppDispatch();

@@ -27,7 +27,7 @@ export const getClubs = async (filters: FiltersType) => {
   const { offset, limit, favorite, name_like } = filters;
   try {
     const response = await fetch(
-      `http://localhost:4000/api/clubs?offset=${offset}&limit=${limit}favorite=${favorite}`,
+      `http://localhost:4000/api/clubs?offset=${offset}&limit=${limit}&favorite=${favorite}&name_like=${name_like}`,
       {
         method: 'GET',
         headers: {
