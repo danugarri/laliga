@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectToken } from '../features/auth.selectors';
+import { selectToken } from '../features/auth/auth.selectors';
 
 export const useAuth = () => {
   const [isAuthorised, setIsAuthorised] = useState(!!localStorage.getItem('token'));

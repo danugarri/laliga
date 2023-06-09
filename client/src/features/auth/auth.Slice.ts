@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getToken } from '../api/api';
-import { UserCredentialsType } from '../components/Login/Login.types';
+import { getToken } from '../../api/api';
+import { UserCredentialsType } from '../../components/Login/Login.types';
 
 interface TokenState {
   status: 'loading' | 'resolved';

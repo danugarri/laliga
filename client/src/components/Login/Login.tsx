@@ -1,5 +1,5 @@
 import { useState, FormEvent } from 'react';
-import { getAsyncToken } from '../../features/auth.Slice';
+import { getAsyncToken } from '../../features/auth/auth.Slice';
 import { useAppDispatch } from '../../store';
 
 export const Login = () => {

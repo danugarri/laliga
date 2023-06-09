@@ -2,7 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
 import { all } from 'redux-saga/effects';
 import counterReducer from '../features/counterSlice';
-import authReducer from '../features/auth.Slice';
+import authReducer from '../features/auth/auth.Slice';
 import counterSaga from '../sagas/counterSaga';
 import { useDispatch } from 'react-redux';
 
