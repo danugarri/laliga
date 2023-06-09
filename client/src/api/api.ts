@@ -21,22 +21,14 @@ export const getToken = async (userCredentials: UserCredentialsType) => {
   }
 };
 
-export const getClubs = async (token: string) => {
+export const getClubs = async () => {
   try {
-    console.log(token);
-
-    const payload = token.split('.')[1];
-    const decodedPayload = atob(payload); // Decoding the Base64-encoded payload
-    const parsedPayload = JSON.parse(decodedPayload);
-    const expirationTime = new Date(parsedPayload.exp * 1000); // Multiplying by 1000 to convert from seconds to milliseconds
-
-    console.log(expirationTime);
     const response = await fetch('http://localhost:4000/api/clubs', {
       method: 'GET',
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImZha2UudXNlckBmYWtlLmNvbSIsImlhdCI6MTY4NjMzMTU1NywiZXhwIjoxNjg2MzM1MTU3fQ.30qT6UtBkaGu7WVGyBk2IX2GEfkLkvRA-66fL_62OiI`,
+        authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
     const data = await response.json();

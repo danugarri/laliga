@@ -6,9 +6,7 @@ export const Clubs = () => {
   const [clubs, setClubs] = useState<Club[]>([]);
   useEffect(() => {
     const getAsynClubsList = async () => {
-      const response: ClubsResponse = await getClubs(
-        JSON.stringify(localStorage.getItem('token')!)
-      );
+      const response: ClubsResponse = await getClubs();
       setClubs(response.results);
     };
     getAsynClubsList();
