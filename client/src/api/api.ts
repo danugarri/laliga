@@ -1,5 +1,6 @@
 import { ClubsResponse } from '../components/Clubs/clubs.types';
 import { LoginResponseData, UserCredentialsType } from '../components/Login/Login.types';
+import { FiltersType } from '../sagas/clubs/clubs.sagas';
 
 export const getToken = async (userCredentials: UserCredentialsType) => {
   try {
@@ -22,16 +23,20 @@ export const getToken = async (userCredentials: UserCredentialsType) => {
   }
 };
 
-export const getClubs = async () => {
+export const getClubs = async (filters: FiltersType) => {
+  const { offset, limit, favorite, name_like } = filters;
   try {
-    const response = await fetch('http://localhost:4000/api/clubs', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('token')}`,
-      },
-    });
+    const response = await fetch(
+      `http://localhost:4000/api/clubs?offset=${offset}&limit=${limit}favorite=${favorite}`,
+      {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      }
+    );
     const data: ClubsResponse = await response.json();
 
     return data;

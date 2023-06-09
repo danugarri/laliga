@@ -2,10 +2,16 @@ import { call, put, takeEvery } from 'redux-saga/effects';
 import { setClubs } from './clubs.slice';
 import { getClubs } from '../../api/api';
 import { ClubsResponse } from '../../components/Clubs/clubs.types';
-
-function* fetchClubs(): Generator<any, void, ClubsResponse> {
+import { PayloadAction } from '@reduxjs/toolkit';
+export type FiltersType = {
+  offset: number;
+  limit: number;
+  favorite?: boolean;
+  name_like?: string;
+};
+function* fetchClubs(action: PayloadAction<FiltersType>): Generator<any, void, ClubsResponse> {
   try {
-    const response: ClubsResponse = yield call(getClubs);
+    const response: ClubsResponse = yield call(getClubs, action.payload);
     yield put(setClubs(response));
   } catch (error) {
     alert(JSON.stringify(error));

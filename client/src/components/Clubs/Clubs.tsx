@@ -1,19 +1,21 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { selectClubs, selectClubsStatus } from '../../sagas/clubs/clubs.selectors';
 import { Box, Image, Text, Icon, Card, CardBody, Flex, Spacer } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Pagination } from '../Pagination/Pagination';
+import { FiltersType } from '../../sagas/clubs/clubs.sagas';
 
 export const Clubs = () => {
+  const [filters, setfilters] = useState<FiltersType>({ limit: 6, offset: 0, favorite: false });
   const clubs = useSelector(selectClubs);
   const clubsStatusRequest = useSelector(selectClubsStatus);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'clubs/getAsyncClubs' });
-  }, [dispatch]);
+    dispatch({ type: 'clubs/getAsyncClubs', payload: filters });
+  }, [dispatch, filters]);
 
   return (
     <>
