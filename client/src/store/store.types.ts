@@ -1,11 +1,7 @@
-export type RootState = {
-  counter: CounterStateType;
-  auth: AuthStateType;
-};
-export type CounterStateType = {
-  count: number;
-};
+import { AuthState } from '../sagas/auth/auth.slice';
+import { ClubsState } from '../sagas/clubs/clubs.slice';
 
-export type AuthStateType = {
-  token: string;
+export type RootState = {
+  auth: AuthState;
+  clubs: ClubsState;
 };

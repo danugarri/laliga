@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectToken } from '../features/auth/auth.selectors';
+import { selectToken } from '../sagas/auth/auth.selectors';
 import { checkExpirationTime } from '../helpers/helpers';
 
 export const useAuth = () => {

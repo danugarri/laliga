@@ -1,7 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { setToken } from './auth.slice';
-import { getToken } from '../api/api';
-import { UserCredentialsType } from '../components/Login/Login.types';
+import { getToken } from '../../api/api';
+import { UserCredentialsType } from '../../components/Login/Login.types';
 import { PayloadAction } from '@reduxjs/toolkit';
 
 function* fetchToken(action: PayloadAction<UserCredentialsType>): Generator<any, void, string> {

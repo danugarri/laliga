@@ -1,3 +1,4 @@
+import { ClubsResponse } from '../components/Clubs/clubs.types';
 import { LoginResponseData, UserCredentialsType } from '../components/Login/Login.types';
 
 export const getToken = async (userCredentials: UserCredentialsType) => {
@@ -31,7 +32,7 @@ export const getClubs = async () => {
         authorization: `Bearer ${localStorage.getItem('token')}`,
       },
     });
-    const data = await response.json();
+    const data: ClubsResponse = await response.json();
 
     return data;
   } catch (error) {

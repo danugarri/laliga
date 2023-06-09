@@ -8,4 +8,5 @@ export interface Club {
 export interface ClubsResponse {
   results: Club[];
   total: number;
+  status: 'resolved' | 'loading';
 }

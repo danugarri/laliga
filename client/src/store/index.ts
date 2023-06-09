@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import createSagaMiddleware from 'redux-saga';
-import authReducer from '../sagas/auth.slice';
+import authReducer from '../sagas/auth/auth.slice';
+import clubsReducer from '../sagas/clubs/clubs.slice';
 import { useDispatch } from 'react-redux';
 import rootSaga from '../sagas/root.sagas';
 
@@ -10,6 +11,7 @@ export const configureAppStore = () => {
   const store = configureStore({
     reducer: {
       auth: authReducer,
+      clubs: clubsReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
   });

@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface TokenState {
+export interface AuthState {
   status: 'loading' | 'resolved';
   token: string | undefined;
 }
 
-const initialState: TokenState = {
+const initialState: AuthState = {
   status: 'loading',
   token: undefined,
 };
