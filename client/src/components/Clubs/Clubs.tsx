@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { selectClubs, selectClubsStatus } from '../../sagas/clubs/clubs.selectors';
-import { Box, Image } from '@chakra-ui/react';
+import { Box, Image, Text } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Club } from './clubs.types';
 
@@ -29,8 +29,8 @@ export const Clubs = () => {
     return (
       <Box maxW="sm" borderWidth="1px" borderRadius="lg" margin={4}>
         <Image src={club.avatar} alt="club" borderRadius="full" boxSize="70px" />
-        <p>{club.name}</p>
-        <p>{club.foundationDate}</p>
+        <Text fontSize="md">{club.name}</Text>
+        <Text fontSize="sm">{club.foundationDate}</Text>
         <span>{club.favorite && <StarIcon />}</span>
       </Box>
     );
