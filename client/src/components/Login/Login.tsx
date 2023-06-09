@@ -1,7 +1,9 @@
 import { useState, FormEvent } from 'react';
-import { getToken } from '../../api/api';
+import { getAsyncToken } from '../../features/auth.Slice';
+import { useAppDispatch } from '../../store';
 
 export const Login = () => {
+  const dispatch = useAppDispatch();
   const [userCredentials, setUserCredentials] = useState({
     email: '',
     password: '',
@@ -9,7 +11,7 @@ export const Login = () => {
 
   const handleSubmit = async (e: FormEvent): Promise<void> => {
     e.preventDefault();
-    await getToken(userCredentials);
+    dispatch(getAsyncToken(userCredentials));
   };
 
   return (

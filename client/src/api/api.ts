@@ -14,7 +14,8 @@ export const getToken = async (userCredentials: UserCredentialsType) => {
       }),
     });
     const data = await response.json();
-    localStorage.setItem('token', data.token);
+
+    return data.token;
   } catch (error) {
     alert(JSON.stringify(error));
   }

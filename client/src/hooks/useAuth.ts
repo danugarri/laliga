@@ -1,30 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../features/auth.selectors';
 
 export const useAuth = () => {
-  const [isAuthorised, setIsAuthorised] = useState(false);
+  const [isAuthorised, setIsAuthorised] = useState(!!localStorage.getItem('token'));
 
+  const token = useSelector(selectToken);
   useEffect(() => {
-    const checkIsAuthorised = () => {
-      const token = localStorage.getItem('token');
+    if (token) {
+      localStorage.setItem('token', token);
       setIsAuthorised(!!token);
-    };
-
-    // Initial check
-    checkIsAuthorised();
-
-    // Listen for changes in localStorage
-    const handleStorageChange = () => {
-      checkIsAuthorised();
-    };
-
-    // Add event listener for storage change
-    window.addEventListener('storage', handleStorageChange);
-
-    // Clean up the event listener on unmount
-    return () => {
-      window.removeEventListener('storage', handleStorageChange);
-    };
-  }, []);
+    }
+  }, [token]);
 
   return {
     isAuthorised,
