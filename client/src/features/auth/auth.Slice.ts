@@ -4,12 +4,12 @@ import { UserCredentialsType } from '../../components/Login/Login.types';
 
 interface TokenState {
   status: 'loading' | 'resolved';
-  token: string | null;
+  token: string | undefined;
 }
 
 const initialState: TokenState = {
   status: 'loading',
-  token: null,
+  token: undefined,
 };
 
 export const getAsyncToken = createAsyncThunk(

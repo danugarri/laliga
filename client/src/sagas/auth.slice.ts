@@ -2,12 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface TokenState {
   status: 'loading' | 'resolved';
-  token: string | null;
+  token: string | undefined;
 }
 
 const initialState: TokenState = {
   status: 'loading',
-  token: null,
+  token: undefined,
 };
 
 const tokenSlice = createSlice({
