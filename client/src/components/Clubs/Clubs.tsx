@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { selectClubs, selectClubsStatus } from '../../sagas/clubs/clubs.selectors';
-import { Box, Image, Text } from '@chakra-ui/react';
+import { Box, IconButton, Image, Text } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Club } from './clubs.types';
 
@@ -31,7 +31,13 @@ export const Clubs = () => {
         <Image src={club.avatar} alt="club" borderRadius="full" boxSize="70px" />
         <Text fontSize="md">{club.name}</Text>
         <Text fontSize="sm">{club.foundationDate}</Text>
-        <span>{club.favorite && <StarIcon />}</span>
+
+        <IconButton
+          colorScheme={club.favorite === true ? 'blue' : 'red'}
+          aria-label="Call Segun"
+          size="md"
+          icon={<StarIcon />}
+        />
       </Box>
     );
   }
