@@ -49,7 +49,7 @@ export const Clubs = ({
         <div>
           <Form filters={filters} updateFilters={updateFilters} setIsAuthorised={setIsAuthorised} />
           <Stack
-            direction={window.screen.width < 1100 ? 'column' : 'row'}
+            direction={['column', 'row']}
             spacing={4}
             align="center"
             justifyContent={'center'}

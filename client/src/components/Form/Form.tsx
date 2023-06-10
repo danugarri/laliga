@@ -24,14 +24,14 @@ export const Form = ({ filters, updateFilters, setIsAuthorised }: FormProps) => 
 
   return (
     <Stack
-      direction="row"
+      direction={['column', 'row']}
       align="center"
       justifyContent={'space-between'}
       marginTop={8}
       marginLeft={8}
       marginRight={8}
     >
-      <FormControl width={'container.sm'}>
+      <FormControl maxWidth={'80'}>
         <FormLabel>Nombre del club</FormLabel>
         <Input type="text" onChange={handleSearchChange} value={searchValue} />
         <FormLabel>Filtrar por favoritos</FormLabel>
