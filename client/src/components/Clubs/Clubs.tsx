@@ -50,7 +50,14 @@ export const Clubs = ({
           <Form filters={filters} updateFilters={updateFilters} setIsAuthorised={setIsAuthorised} />
           <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={2}>
             {clubs.map((club) => (
-              <Card key={club.id} maxW={'sm'}>
+              <Card
+                key={club.id}
+                maxW={'sm'}
+                width={'60'}
+                height={'56'}
+                marginTop={8}
+                marginBottom={8}
+              >
                 <CardBody maxW="sm" margin={4}>
                   <Flex>
                     <Box>
@@ -68,8 +75,8 @@ export const Clubs = ({
                       />
 
                       <Switch
+                        isChecked={club.favorite}
                         id="updated-favorite"
-                        checked={club.favorite}
                         onChange={() => {
                           console.log(club);
 
