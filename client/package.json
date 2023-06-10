@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "author": "danugarri@gmail.com",
   "version": "0.1.0",
   "private": true,
   "baseUrl": ".",
