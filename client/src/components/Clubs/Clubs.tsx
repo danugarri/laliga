@@ -54,17 +54,17 @@ export const Clubs = ({
             align="center"
             justifyContent={'center'}
             margin={2}
+            wrap="wrap"
           >
             {clubs.map((club) => (
               <Card
                 key={club.id}
-                maxW={'sm'}
-                width={'60'}
-                height={'56'}
-                marginTop={8}
-                marginBottom={8}
+                height={'48'}
+                marginTop={6}
+                marginBottom={3}
+                background={'blackAlpha.100'}
               >
-                <CardBody maxW="sm" margin={4}>
+                <CardBody margin={4}>
                   <Flex>
                     <Box>
                       <Image src={club.avatar} alt="club" borderRadius="full" boxSize="70px" />
