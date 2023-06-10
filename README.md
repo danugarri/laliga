@@ -59,8 +59,33 @@ yarn && yarn start
 
 **_ Puedes documentar aquí la memoria de tu prueba _**
 
-- Added the following dependencies:
+**- Added the following dependencies:**
 
-* react-router-dom
-* redux react-redux redux @reduxjs/toolkit
-* redux-saga @types/redux-saga
+- react-router-dom
+- redux react-redux redux @reduxjs/toolkit
+- redux-saga @types/redux-saga
+- @chakra-ui/icons
+
+**- The Scaffolding for the client folder is as follows:**
+
+```text
+|--client
+    |
+    |--coverage ( exluded on .gitignore)
+    |
+    |--public
+    |
+    |--src
+        |
+        |--api
+        |
+        |--components
+        |
+        |--docs
+        |
+        |--hooks
+        |
+        |--sagas
+        |
+        |--store
+```
