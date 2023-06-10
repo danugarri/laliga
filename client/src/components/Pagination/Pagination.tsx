@@ -21,11 +21,11 @@ export const Pagination = ({ updateFilters, filters }: PaginationProps) => {
   }, [filters]);
   return (
     <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={2}>
-      <Text fontSize="md">{`Pág ${filters.offset}`}</Text>
+      <Text fontSize="md">{`Pág ${filters.offset / filters.limit}`}</Text>
       <Button
         colorScheme="teal"
         variant="solid"
-        onClick={() => updateFilters(filters, 'offset', filters.offset - 1)}
+        onClick={() => updateFilters(filters, 'offset', filters.offset - filters.limit)}
         isDisabled={!isClickable}
       >
         Anterior
@@ -33,7 +33,7 @@ export const Pagination = ({ updateFilters, filters }: PaginationProps) => {
       <Button
         colorScheme="teal"
         variant="outline"
-        onClick={() => updateFilters(filters, 'offset', filters.offset + 1)}
+        onClick={() => updateFilters(filters, 'offset', filters.offset + filters.limit)}
       >
         Siguiente
       </Button>
