@@ -76,7 +76,7 @@ export const Clubs = ({
 
                       <Switch
                         isChecked={club.favorite}
-                        id="updated-favorite"
+                        id={club.id}
                         onChange={() => {
                           console.log(club);
 
