@@ -1,10 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Login } from './Login';
 
-const mockedDispatch = jest.fn();
+const mockedUseAppDispatch = jest.fn();
 
-jest.mock('react-redux', () => ({
-  useDispatch: () => mockedDispatch(),
+jest.mock('react-redux', () => ({ ...jest.requireActual('react-redux'), useDispatch: jest.fn() }));
+jest.mock('../../store', () => ({
+  ...jest.requireActual('../../store'),
+  useAppDispatch: () => mockedUseAppDispatch,
 }));
 
 describe('The Login compoent', () => {
@@ -19,5 +21,17 @@ describe('The Login compoent', () => {
     const passwordInput = screen.getByTestId('password-input');
     fireEvent.change(emailInput, { target: { value: 'test' } });
     fireEvent.change(passwordInput, { target: { value: 'test' } });
+  });
+  test('should call both mockedDispatch function', () => {
+    render(<Login />);
+    const emailInput = screen.getByTestId('email-input');
+    const passwordInput = screen.getByTestId('password-input');
+    fireEvent.change(emailInput, { target: { value: 'test' } });
+    fireEvent.change(passwordInput, { target: { value: 'test' } });
+
+    const loginInput = screen.getByTestId('login-input');
+    fireEvent.submit(loginInput);
+
+    expect(mockedUseAppDispatch).toHaveBeenCalled();
   });
 });

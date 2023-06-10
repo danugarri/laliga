@@ -76,6 +76,7 @@ export const Login = () => {
           }}
         />
         <input
+          data-testid="login-input"
           type="submit"
           style={{
             padding: '5px',
