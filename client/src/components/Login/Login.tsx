@@ -54,6 +54,7 @@ export const Login = () => {
       >
         <span>Email</span>
         <input
+          data-testid="email-input"
           type="text"
           name="email"
           onChange={(e) => {
@@ -63,6 +64,7 @@ export const Login = () => {
         />
         <span>Password</span>
         <input
+          data-testid="password-input"
           type="text"
           name="password"
           onChange={(e) => {
