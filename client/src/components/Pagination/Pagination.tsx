@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Button, Stack, Text } from '@chakra-ui/react';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
+import { useSelector } from 'react-redux';
+import { selectClubs } from '../../sagas/clubs/clubs.selectors';
 
 export type PaginationProps = {
   updateFilters: (filters: FiltersType, filter: string, value: any) => void;
@@ -8,6 +10,7 @@ export type PaginationProps = {
 };
 export const Pagination = ({ updateFilters, filters }: PaginationProps) => {
   const [isClickable, setIsClickable] = useState(true);
+  const resultsPerPage = useSelector(selectClubs);
   useEffect(() => {
     const updatePage = () => {
       if (filters.offset > 0) {
@@ -31,6 +34,7 @@ export const Pagination = ({ updateFilters, filters }: PaginationProps) => {
         Anterior
       </Button>
       <Button
+        isDisabled={resultsPerPage.length === 0}
         colorScheme="teal"
         variant="outline"
         onClick={() => updateFilters(filters, 'offset', filters.offset + filters.limit)}
