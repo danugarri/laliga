@@ -94,7 +94,7 @@ Por otro lado la vista ha de cumplir con los siguientes requisitos:
 - Que documentes tu código pensando en que será leído por otro desarrollador.
 - Que no hay código duplicado y/o copipasteado.
 - Que has usado javascript moderno, declarativo y aplicando los patrones funcionales propuestos por React y Redux.
-- Aderirses a los principios SOLID, al menos aquellos que pueden aplicarse en React.
+- Aderirse a los principios SOLID, al menos aquellos que pueden aplicarse en React.
 - Una consola limpia de errores y warnings.
 - Flujo de uso y manejo de errores (con feedback para el usuario) correctos.
 
