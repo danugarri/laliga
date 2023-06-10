@@ -23,7 +23,7 @@ export const Form = ({ filters, updateFilters, setIsAuthorised }: FormProps) => 
   };
 
   return (
-    <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={2}>
+    <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={4}>
       <FormControl>
         <FormLabel>Nombre del club</FormLabel>
         <Input type="text" onChange={handleSearchChange} value={searchValue} />
