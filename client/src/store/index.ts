@@ -4,6 +4,7 @@ import authReducer from '../sagas/auth/auth.slice';
 import clubsReducer from '../sagas/clubs/clubs.slice';
 import { useDispatch } from 'react-redux';
 import rootSaga from '../sagas/root.sagas';
+import favoriteReducer from '../sagas/favorite/favorite.slice';
 
 export const configureAppStore = () => {
   const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +13,7 @@ export const configureAppStore = () => {
     reducer: {
       auth: authReducer,
       clubs: clubsReducer,
+      favorite: favoriteReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
   });

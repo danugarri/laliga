@@ -53,7 +53,16 @@ export const Clubs = () => {
                           color={club.favorite === true ? 'orange' : 'grey'}
                         />
 
-                        <Switch id="updated-favorite" checked={club.favorite} />
+                        <Switch
+                          id="updated-favorite"
+                          checked={club.favorite}
+                          onChange={() => {
+                            console.log(club);
+
+                            dispatch({ type: 'clubs/patchAsyncFavorite', payload: club });
+                            dispatch({ type: 'clubs/getAsyncClubs', payload: filters });
+                          }}
+                        />
                       </Box>
                     </Flex>
                   </CardBody>
