@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormControl, FormLabel, Input, Switch } from '@chakra-ui/react';
-import { debounce } from 'lodash'; // Importa la función `debounce` de Lodash o la biblioteca que prefieras
+import { debounce } from 'lodash';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
 
 export type FormProps = {
