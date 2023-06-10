@@ -42,13 +42,20 @@ export const Clubs = ({
       ...filters,
       [filter]: value,
     });
+  console.log(window.screen.width);
 
   return (
     <>
       {clubsStatusRequest === 'resolved' ? (
         <div>
           <Form filters={filters} updateFilters={updateFilters} setIsAuthorised={setIsAuthorised} />
-          <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={2}>
+          <Stack
+            direction={window.screen.width < 1100 ? 'column' : 'row'}
+            spacing={4}
+            align="center"
+            justifyContent={'center'}
+            margin={2}
+          >
             {clubs.map((club) => (
               <Card
                 key={club.id}
