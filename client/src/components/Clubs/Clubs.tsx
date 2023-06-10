@@ -8,7 +8,11 @@ import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
 import { Form } from '../Form/Form';
 
-export const Clubs = () => {
+export const Clubs = ({
+  setIsAuthorised,
+}: {
+  setIsAuthorised: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   const [filters, setFilters] = useState<FiltersType>({
     limit: 6,
     offset: 0,
@@ -32,7 +36,7 @@ export const Clubs = () => {
     <>
       {clubsStatusRequest === 'resolved' ? (
         <div>
-          <Form filters={filters} updateFilters={updateFilters} />
+          <Form filters={filters} updateFilters={updateFilters} setIsAuthorised={setIsAuthorised} />
           {clubs.map((club) => (
             <section key={club.id}>
               {

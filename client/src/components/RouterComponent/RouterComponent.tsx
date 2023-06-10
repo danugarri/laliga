@@ -3,7 +3,13 @@ import { Login } from '../Login/Login';
 import { routes } from '../../routes';
 import { Clubs } from '../Clubs/Clubs';
 
-export const RouterComponent = ({ isAuthorised }: { isAuthorised: boolean }) => {
+export const RouterComponent = ({
+  isAuthorised,
+  setIsAuthorised,
+}: {
+  isAuthorised: boolean;
+  setIsAuthorised: React.Dispatch<React.SetStateAction<boolean>>;
+}) => {
   return (
     <Router>
       <Routes>
@@ -23,7 +29,13 @@ export const RouterComponent = ({ isAuthorised }: { isAuthorised: boolean }) => 
         />
         <Route
           path={`${routes.clubs}`}
-          element={isAuthorised ? <Clubs /> : <Navigate to={`${routes.login}`} />}
+          element={
+            isAuthorised ? (
+              <Clubs setIsAuthorised={setIsAuthorised} />
+            ) : (
+              <Navigate to={`${routes.login}`} />
+            )
+          }
         />
       </Routes>
     </Router>
