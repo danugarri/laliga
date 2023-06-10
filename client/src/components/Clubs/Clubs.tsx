@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { selectClubs, selectClubsStatus } from '../../sagas/clubs/clubs.selectors';
-import { Box, Image, Text, Icon, Card, CardBody, Flex, Spacer } from '@chakra-ui/react';
+import { Box, Image, Text, Icon, Card, CardBody, Flex, Spacer, Switch } from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
@@ -43,12 +43,16 @@ export const Clubs = () => {
                         <Text fontSize="sm">{club.foundationDate}</Text>
                       </Box>
                       <Spacer />
-                      <Icon
-                        as={StarIcon}
-                        w={8}
-                        h={8}
-                        color={club.favorite === true ? 'orange' : 'grey'}
-                      />
+                      <Box>
+                        <Icon
+                          as={StarIcon}
+                          w={8}
+                          h={8}
+                          color={club.favorite === true ? 'orange' : 'grey'}
+                        />
+
+                        <Switch id="updated-favorite" checked={club.favorite} />
+                      </Box>
                     </Flex>
                   </CardBody>
                 </Card>
