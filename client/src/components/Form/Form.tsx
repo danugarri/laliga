@@ -23,8 +23,15 @@ export const Form = ({ filters, updateFilters, setIsAuthorised }: FormProps) => 
   };
 
   return (
-    <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={4}>
-      <FormControl>
+    <Stack
+      direction="row"
+      spacing={4}
+      align="center"
+      justifyContent={'left'}
+      marginTop={8}
+      marginLeft={8}
+    >
+      <FormControl width={'container.md'}>
         <FormLabel>Nombre del club</FormLabel>
         <Input type="text" onChange={handleSearchChange} value={searchValue} />
         <FormLabel>Filtrar por favoritos</FormLabel>
@@ -34,6 +41,8 @@ export const Form = ({ filters, updateFilters, setIsAuthorised }: FormProps) => 
         />
       </FormControl>
       <Button
+        position={'absolute'}
+        right={'10'}
         colorScheme="teal"
         variant="solid"
         onClick={() => {
