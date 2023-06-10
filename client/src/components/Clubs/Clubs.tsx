@@ -2,7 +2,18 @@ import { useEffect, useState } from 'react';
 import { useAppDispatch } from '../../store';
 import { useSelector } from 'react-redux';
 import { selectClubs, selectClubsStatus } from '../../sagas/clubs/clubs.selectors';
-import { Box, Image, Text, Icon, Card, CardBody, Flex, Spacer, Switch } from '@chakra-ui/react';
+import {
+  Box,
+  Image,
+  Text,
+  Icon,
+  Card,
+  CardBody,
+  Flex,
+  Spacer,
+  Switch,
+  Stack,
+} from '@chakra-ui/react';
 import { StarIcon } from '@chakra-ui/icons';
 import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
@@ -37,43 +48,41 @@ export const Clubs = ({
       {clubsStatusRequest === 'resolved' ? (
         <div>
           <Form filters={filters} updateFilters={updateFilters} setIsAuthorised={setIsAuthorised} />
-          {clubs.map((club) => (
-            <section key={club.id}>
-              {
-                <Card>
-                  <CardBody maxW="sm" borderWidth="1px" borderRadius="lg" margin={4}>
-                    <Flex>
-                      <Box>
-                        <Image src={club.avatar} alt="club" borderRadius="full" boxSize="70px" />
-                        <Text fontSize="md">{club.name}</Text>
-                        <Text fontSize="sm">{club.foundationDate}</Text>
-                      </Box>
-                      <Spacer />
-                      <Box>
-                        <Icon
-                          as={StarIcon}
-                          w={8}
-                          h={8}
-                          color={club.favorite === true ? 'orange' : 'grey'}
-                        />
+          <Stack direction="row" spacing={4} align="center" justifyContent={'center'} margin={2}>
+            {clubs.map((club) => (
+              <Card key={club.id} maxW={'sm'}>
+                <CardBody maxW="sm" margin={4}>
+                  <Flex>
+                    <Box>
+                      <Image src={club.avatar} alt="club" borderRadius="full" boxSize="70px" />
+                      <Text fontSize="md">{club.name}</Text>
+                      <Text fontSize="sm">{club.foundationDate}</Text>
+                    </Box>
+                    <Spacer />
+                    <Box>
+                      <Icon
+                        as={StarIcon}
+                        w={8}
+                        h={8}
+                        color={club.favorite === true ? 'orange' : 'grey'}
+                      />
 
-                        <Switch
-                          id="updated-favorite"
-                          checked={club.favorite}
-                          onChange={() => {
-                            console.log(club);
+                      <Switch
+                        id="updated-favorite"
+                        checked={club.favorite}
+                        onChange={() => {
+                          console.log(club);
 
-                            dispatch({ type: 'clubs/patchAsyncFavorite', payload: club });
-                            dispatch({ type: 'clubs/getAsyncClubs', payload: filters });
-                          }}
-                        />
-                      </Box>
-                    </Flex>
-                  </CardBody>
-                </Card>
-              }
-            </section>
-          ))}
+                          dispatch({ type: 'clubs/patchAsyncFavorite', payload: club });
+                          dispatch({ type: 'clubs/getAsyncClubs', payload: filters });
+                        }}
+                      />
+                    </Box>
+                  </Flex>
+                </CardBody>
+              </Card>
+            ))}
+          </Stack>
           <Pagination updateFilters={updateFilters} filters={filters} />
         </div>
       ) : (
