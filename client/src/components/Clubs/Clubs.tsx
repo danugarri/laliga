@@ -42,7 +42,6 @@ export const Clubs = ({
       ...filters,
       [filter]: value,
     });
-  console.log(window.screen.width);
 
   return (
     <>

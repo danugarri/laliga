@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { selectToken } from '../sagas/auth/auth.selectors';
-import { checkExpirationTime } from '../helpers/helpers';
+
+import { useCheckExpiration } from './useCheckExpiration';
 
 export const useAuth = () => {
   const [isAuthorised, setIsAuthorised] = useState(!!localStorage.getItem('token'));
 
-  const isExpired = checkExpirationTime();
+  const isExpired = useCheckExpiration();
   const token = useSelector(selectToken);
 
   useEffect(() => {
