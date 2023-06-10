@@ -6,6 +6,7 @@ import { Box, Image, Text, Icon, Card, CardBody, Flex, Spacer, Switch } from '@c
 import { StarIcon } from '@chakra-ui/icons';
 import { Pagination } from '../Pagination/Pagination';
 import { FiltersType } from '../../sagas/clubs/clubs.sagas';
+import { Form } from '../Form/Form';
 
 export const Clubs = () => {
   const [filters, setFilters] = useState<FiltersType>({
@@ -31,6 +32,7 @@ export const Clubs = () => {
     <>
       {clubsStatusRequest === 'resolved' ? (
         <div>
+          <Form filters={filters} updateFilters={updateFilters} />
           {clubs.map((club) => (
             <section key={club.id}>
               {
