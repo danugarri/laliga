@@ -1,12 +1,18 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { Login } from './Login';
+import { UserCredentialsType } from './Login.types';
 
 const mockedUseAppDispatch = jest.fn();
+const mockedGetToken = jest.fn();
 
 jest.mock('react-redux', () => ({ ...jest.requireActual('react-redux'), useDispatch: jest.fn() }));
 jest.mock('../../store', () => ({
   ...jest.requireActual('../../store'),
   useAppDispatch: () => mockedUseAppDispatch,
+}));
+jest.mock('../../api/api', () => ({
+  ...jest.requireActual('../../api/api'),
+  getToken: (credentials: UserCredentialsType) => mockedGetToken(credentials),
 }));
 
 describe('The Login compoent', () => {
@@ -32,6 +38,11 @@ describe('The Login compoent', () => {
     const loginInput = screen.getByTestId('login-input');
     fireEvent.submit(loginInput);
 
-    expect(mockedUseAppDispatch).toHaveBeenCalled();
+    const expectedParams = {
+      payload: { email: 'test', password: 'test' },
+      type: 'token/getAsyncToken',
+    };
+
+    expect(mockedUseAppDispatch).toHaveBeenCalledWith(expectedParams);
   });
 });
