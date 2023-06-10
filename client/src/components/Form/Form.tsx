@@ -9,7 +9,7 @@ export const Form = ({ filters, updateFilters }: FormProps) => {
   return (
     <FormControl>
       <FormLabel>Nombre del club</FormLabel>
-      <Input type="text" />
+      <Input type="text" onChange={(e) => updateFilters(filters, 'name_like', e.target.value)} />
       <FormLabel>Filtrar por favoritos</FormLabel>
       <Switch
         id="filter-by-favorites"
