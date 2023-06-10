@@ -25,7 +25,7 @@ export const getToken = async (userCredentials: UserCredentialsType) => {
 
 export const getClubs = async (filters: FiltersType) => {
   const { offset, limit, favorite, name_like } = filters;
-  const favoriteQuery = !!favorite ? `&favorite=${favorite}` : undefined;
+  const favoriteQuery = !!favorite ? `&favorite=${favorite}` : '';
   try {
     const response = await fetch(
       `http://localhost:4000/api/clubs?offset=${offset}&limit=${limit}${favoriteQuery}&name_like=${name_like}`,
