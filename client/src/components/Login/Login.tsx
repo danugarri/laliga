@@ -40,6 +40,7 @@ export const Login = () => {
         </u>
       </div>
       <form
+        data-testid="login-form"
         onSubmit={handleSubmit}
         style={{
           display: 'flex',
