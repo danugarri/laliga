@@ -41,6 +41,7 @@ export const Form = ({ filters, updateFilters, setIsAuthorised }: FormProps) => 
         />
       </FormControl>
       <Button
+        minWidth={'fit-content'}
         colorScheme="teal"
         variant="solid"
         onClick={() => {
